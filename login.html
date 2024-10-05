@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProJectNaDear - Login</title>
+    <link rel="icon" href="images/xxxxxxxxxx.png" type="image/x-icon">
+    <link rel="stylesheet" href="stylesLogin.css">
+    <link rel="stylesheet" href="modal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="fade-in hidden">
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/xxxxxxxxxx.png" alt="ProJectNa Logo">
+                </a>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="extra-links">
+                <div class="search-container">
+                    <a href="#" aria-label="ค้นหา" class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <input type="text" placeholder="Search" class="search-input">
+                    <a href="#" aria-label="ลบข้อความ" class="close-icon">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+                <span>|</span>
+                <a href="register.html" class="register">ลงทะเบียน</a>
+                <span>|</span>
+                <a href="#english">English</a>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+    <script>
+        document.querySelector('.search-icon').addEventListener('click', function() {
+            const searchContainer = document.querySelector('.search-container');
+            const searchInput = document.querySelector('.search-input');
+
+            if (searchContainer.classList.contains('active')) {
+                // ถ้ากล่องค้นหาเปิดอยู่ ให้ปิด
+                searchContainer.classList.remove('active');
+                searchInput.style.width = '0';
+                searchInput.style.opacity = '0';
+                searchInput.style.visibility = 'hidden'; // ซ่อนกล่องค้นหา
+                searchInput.value = ''; // ลบข้อความในกล่องค้นหาเมื่อปิด
+                closeIcon.style.display = 'none'; // ซ่อนปุ่มกากบาทเมื่อปิด
+            } else {
+                // ถ้ากล่องค้นหาปิดอยู่ ให้เปิด
+                searchContainer.classList.add('active');
+                searchInput.style.width = '200px';
+                searchInput.style.opacity = '1';
+                searchInput.style.visibility = 'visible';
+                searchInput.focus(); // โฟกัสกล่องค้นหาเมื่อแสดง
+            }
+        });
+
+        const searchInput = document.querySelector('.search-input');
+        const closeIcon = document.querySelector('.close-icon');
+
+        // เพิ่มการตรวจสอบเมื่อมีการพิมพ์ในกล่องค้นหา
+        searchInput.addEventListener('input', function() {
+            if (searchInput.value) {
+                closeIcon.style.display = 'block'; // แสดงปุ่มกากบาทเมื่อมีข้อความ
+            } else {
+                closeIcon.style.display = 'none'; // ซ่อนปุ่มกากบาทถ้าไม่มีข้อความ
+            }
+        });
+
+        // การทำงานของปุ่มกากบาท
+        closeIcon.addEventListener('click', function() {
+            searchInput.value = ''; // ลบข้อความในกล่องค้นหา
+            closeIcon.style.display = 'none'; // ซ่อนปุ่มกากบาท
+            searchInput.focus(); // โฟกัสที่กล่องค้นหา
+        });
+
+        // ลบกรอบเมื่อมีการพิมพ์
+        searchInput.addEventListener('focus', function() {
+            searchInput.style.border = 'none'; // เอากรอบออกเมื่อโฟกัส
+        });
+
+    </script>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.querySelector('body');
+            body.classList.remove('hidden');
+            body.classList.add('fade-in');
+        });
+    </script>
+
+
+
+
+
+
+
+
+        <main>
+            <div class="login-container">
+                <h2>เข้าสู่ระบบ</h2>
+                <form action="dashboard.html" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">เข้าสู่ระบบ</button>
+                </form>
+                <p class="register-link">ยังไม่มีบัญชี? <a href="register.html">ลงทะเบียนที่นี่</a></p>
+            </div>
+        </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2024 ProJectNaDear. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/suvanan.pakdeenan.3" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_dear_2547/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // การจัดการการแสดงผล
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.remove('hidden');
+            document.body.classList.add('fade-in');
+        });
+    </script>
+</body>
+</html>

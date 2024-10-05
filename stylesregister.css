@@ -1,0 +1,416 @@
+/* Resetting default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: #ffe6f0; /* พื้นหลังชมพูอ่อน */
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 300px;
+}
+
+.extra-links {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.extra-links a,
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.extra-links span {
+    margin-left: 10px;
+}
+
+.logo img {
+    width: 70px;
+    height: auto;
+    margin-right: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-left: 50px;
+}
+
+nav ul li a {
+    padding-bottom: 5px;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #f81976, #fca607);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f81976;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Content styles */
+.content {
+    padding: 50px 30px;
+    text-align: center;
+}
+
+a {
+    color: #d5006d; /* สีของลิงก์ */
+    text-decoration: none !important; /* ไม่มีขีดเส้นใต้ */
+}
+
+a:hover {
+    text-decoration: none !important; /* ไม่มีขีดเส้นใต้เมื่อวางเมาส์ */
+}
+
+
+a i {
+    color: #f19cbb;
+}
+
+#mapLink i {
+    margin-right: 8px;
+}
+
+
+
+
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* จัดให้เริ่มจากซ้าย */
+    border-radius: 20px; /* มุมโค้ง */
+    overflow: hidden; /* ซ่อนส่วนที่เกิน */
+    transition: width 0.4s ease; /* การเปลี่ยนแบบนุ่มนวล */
+    background-color: rgba(255, 255, 255, 0); /* พื้นหลังของกรอบค้นหา */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* เงา */
+    width: 40px; /* ขนาดเมื่อยังไม่กด */
+    border: none; /* ไม่มีกรอบเมื่อยังไม่เปิด */
+    margin-right: 10px;
+}
+
+.search-icon, .close-icon {
+    font-size: 20px; /* ขนาดไอคอน */
+    color: #f19cbb;
+    padding: 10px; /* ขนาด padding เพื่อทำให้ไอคอนมีพื้นที่มากขึ้น */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์ */
+}
+
+.search-input {
+    width: 0; /* ซ่อนกล่องค้นหา */
+    opacity: 0; /* ซ่อนกล่องค้นหา */
+    padding: 8px; /* ระยะห่างในกล่องค้นหา */
+    border: none; /* เอากรอบออก */
+    border-radius: 20px; /* มุมโค้ง */
+    transition: width 0.4s ease, opacity 0.4s ease; /* การเปลี่ยนแบบนุ่มนวล */
+    visibility: hidden; /* ซ่อนกล่องค้นหา */
+}
+
+.search-container.active {
+    width: 280px; /* ขนาดกรอบเมื่อเปิด (รวมไอคอน) */
+    border: none; /* ไม่มีกรอบเมื่อเปิด */
+    background-color: rgba(255, 255, 255, 1); /* เปลี่ยนพื้นหลังเป็นขาวเมื่อเปิด */
+}
+
+.search-container.active .search-input {
+    width: 200px; /* ขยายกล่องค้นหาเมื่อเปิด */
+    opacity: 1; /* ทำให้มองเห็น */
+    visibility: visible; /* แสดงกล่องค้นหา */
+}
+
+.close-icon {
+    display: none; /* ซ่อนปุ่มกากบาท */
+    font-size: 10px; /* ขนาดไอคอน */
+    color: black; /* เปลี่ยนเป็นสีดำ */
+    padding: 2px; /* ขนาด padding เพื่อทำให้ไอคอนมีพื้นที่มากขึ้น */
+    margin-left: 5px; /* ขยับไปทางซ้าย */
+}
+
+/* แสดงปุ่มกากบาทเมื่อกล่องค้นหาเปิด */
+.search-container.active .close-icon {
+    display: block;
+}
+
+/* ลบกรอบที่ปรากฏเมื่อโฟกัส */
+.search-input:focus {
+    outline: none; /* ลบขอบที่ปรากฏเมื่อโฟกัส */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Login and Register button styles */
+.login-register,
+.register {
+    padding: 5px 20px;
+    border-radius: 40px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.login-register {
+    color: white;
+    border: 2px solid #fff;
+    margin-left: 10px;
+}
+
+.login-register:hover {
+    color: #000;
+    background-color: #f19cbb;
+    border: 2px solid #f19cbb; /* เพิ่มกรอบสีชมพู */
+}
+
+
+.register {
+    color: #000 !important;
+    background-color: #f19cbb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main styles */
+/* Main styles */
+main {
+    background-color: #fdf2fb; /* สีพื้นหลังของฟอร์ม */
+    padding: 50px; /* การเว้นระยะในเนื้อหา */
+    border-radius: 8px; /* มุมมน */
+    box-shadow: 0 4px 10px rgb(216, 18, 206); /* เงา */
+    width: 400px; /* ความกว้างของฟอร์ม */
+    margin: auto; /* จัดกลาง */
+    display: flex; /* ใช้ Flexbox */
+    flex-direction: column; /* แนวตั้ง */
+    justify-content: center; /* จัดกลางในแนวตั้ง */
+    margin-top: 100px;
+
+}
+
+/* Header styles */
+h2 {
+    text-align: center; /* จัดกลางข้อความ */
+    margin-bottom: 20px; /* เว้นระยะด้านล่าง */
+    color: #d5006d; /* สีข้อความหัวเรื่อง */
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 15px; /* ระยะห่างระหว่างฟอร์ม */
+}
+
+label {
+    display: block; /* ให้ label แสดงเป็นบล็อก */
+    margin-bottom: 5px; /* ระยะห่างระหว่าง label และ input */
+    color: #333; /* สีข้อความ */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* ความกว้างเต็ม */
+    padding: 10px; /* การเว้นระยะภายใน */
+    border: 1px solid #ccc; /* ขอบ */
+    border-radius: 4px; /* มุมมน */
+    transition: border 0.3s; /* การเปลี่ยนแปลงที่ราบรื่น */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #d5006d; /* สีขอบเมื่ออยู่ในโฟกัส */
+}
+
+/* Button styles */
+button {
+    width: 100%; /* ความกว้างเต็ม */
+    padding: 10px; /* การเว้นระยะภายใน */
+    background-color: #d5006d; /* สีพื้นหลังปุ่ม */
+    color: white; /* สีตัวอักษร */
+    border: none; /* ไม่มีขอบ */
+    border-radius: 4px; /* มุมมน */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์ */
+    transition: background-color 0.3s; /* การเปลี่ยนแปลงที่ราบรื่น */
+}
+
+button:hover {
+    background-color: #a70045; /* สีเมื่อวางเมาส์บนปุ่ม */
+}
+
+/* Link styles */
+.register-link {
+    text-align: center; /* จัดกลางข้อความ */
+    margin-top: 40px; /* เพิ่มระยะห่างด้านบน */
+}
+
+a {
+    color: #d5006d; /* สีของลิงก์ */
+    text-decoration: none; /* ไม่มีขีดเส้นใต้ */
+}
+
+a:hover {
+    text-decoration: underline; /* ขีดเส้นใต้เมื่อวางเมาส์บนลิงก์ */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* เพิ่มระยะห่างระหว่าง main และ footer */
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 100px; 
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between; /* จัดให้ข้อความอยู่กลางและไอคอนอยู่ชิดขวา */
+    align-items: center; /* จัดแนวกลางในแนวตั้ง */
+}
+
+.social-links {
+    display: flex;
+}
+
+.social-links a {
+    font-size: 28px; /* ขนาดไอคอนที่ใหญ่ขึ้น */
+    margin: 0 15px; /* ช่องว่างระหว่างไอคอน */
+    text-decoration: none; /* ลบเส้นใต้ */
+    transition: color 0.3s, transform 0.3s; /* การเปลี่ยนสีและขนาดแบบนุ่มนวล */
+}
+
+.social-links a:hover {
+    color: #525048; /* สีเมื่อชี้ */
+    transform: scale(1.1); /* ขยายไอคอนเล็กน้อยเมื่อชี้ */
+}
+
+/* เพิ่มเติมสำหรับการเข้าถึง */
+footer p {
+    margin: 0; /* ลบระยะห่างสำหรับการจัดตำแหน่งที่ดีขึ้น */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries for mobile devices */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .extra-links {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .content {
+        padding: 30px 15px;
+    }
+
+    .login-register,
+    .register {
+        padding: 5px 10px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    nav {
+        padding: 10px 40px;
+    }
+
+    .content {
+        padding: 40px 20px;
+    }
+}

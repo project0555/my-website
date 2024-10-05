@@ -1,0 +1,407 @@
+/* Resetting default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: #ffe6f0; /* พื้นหลังชมพูอ่อน */
+
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Header styles */
+header {
+    background-color: #000000; /* สีพื้นหลังของ header */
+    color: white; /* สีข้อความ */
+    box-shadow: 0 2px 4px rgb(238, 163, 245); /* เพิ่มเงาเพื่อสร้างมิติ */
+}
+
+nav {
+    display: flex; /* ใช้ flexbox */
+    align-items: center; /* จัดกลางในแนวตั้ง */
+    justify-content: space-between; /* จัดให้มีช่องว่างระหว่าง */
+    padding: 10px 300px; /* การเว้นระยะในแนวนอน */
+}
+
+/* Extra links styles */
+.extra-links {
+    display: flex; /* ใช้ flexbox */
+    align-items: center; /* จัดกลางในแนวตั้ง */
+    margin-left: auto; /* ดันลิงก์ไปทางขวา */
+}
+
+.extra-links a {
+    color: white; /* สีลิงก์ */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    margin-left: 20px; /* เว้นระยะระหว่างลิงก์ */
+    transition: color 0.3s, border-color 0.3s; /* การเปลี่ยนแปลงที่ราบรื่น */
+}
+
+
+.extra-links span {
+    color: white; /* สีข้อความของ span */
+    margin-left: 10px; /* เว้นระยะก่อนตัวแบ่ง */
+}
+
+/* Logo styles */
+.logo img {
+    width: 70px; /* กำหนดความกว้างโลโก้ */
+    height: auto; /* รักษาสัดส่วน */
+    margin-right: 50px; /* เว้นระยะให้กับรายการใน navbar */
+}
+
+/* Navigation styles */
+nav ul {
+    display: flex; /* ใช้ flexbox */
+    list-style-type: none; /* ไม่มีสัญลักษณ์รายการ */
+}
+
+nav ul li {
+    margin-left: 50px; /* ลดระยะห่างระหว่างรายการ */
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255); /* สีลิงก์ */
+    text-decoration: none; /* ไม่มีเส้นใต้ */
+    transition: color 0.3s; /* เพิ่ม transition สำหรับสี */
+    padding-bottom: 5px; /* เว้นระยะด้านล่าง */
+    position: relative; /* ใช้สำหรับ position ของ pseudo-element */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #fd81b5, hsl(315, 84%, 65%));
+    transform: scaleX(0); /* เริ่มจากไม่มีเส้น */
+    transition: transform 0.3s; /* เพิ่ม transition สำหรับการ scale */
+}
+
+nav ul li a:hover {
+    color: #ff91bf; /* เปลี่ยนสีเมื่อ hover */
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1); /* ขยายเส้นเมื่อ hover */
+}
+
+
+/* Content styles */
+.content {
+    padding: 50px 30px; /* การเว้นระยะในเนื้อหา */
+    text-align: center; /* จัดข้อความให้กลาง */
+}
+
+/* Link styles */
+a {
+    display: inline-flex; /* ใช้ flexbox เพื่อจัดตำแหน่ง */
+    align-items: center; /* จัดให้กลาง */
+}
+
+a i {
+    margin-left: 0px; /* เว้นระยะห่างระหว่างข้อความและไอคอน */
+    color: #f19cbb; /* เปลี่ยนสีไอคอนถ้าต้องการ */
+}
+
+#mapLink i {
+    margin-right: 8px; /* เว้นระยะระหว่างไอคอนและข้อความ */
+}
+
+
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* จัดให้เริ่มจากซ้าย */
+    border-radius: 20px; /* มุมโค้ง */
+    overflow: hidden; /* ซ่อนส่วนที่เกิน */
+    transition: width 0.4s ease; /* การเปลี่ยนแบบนุ่มนวล */
+    background-color: rgba(255, 255, 255, 0); /* พื้นหลังของกรอบค้นหา */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* เงา */
+    width: 40px; /* ขนาดเมื่อยังไม่กด */
+    height: 40px; /* เพิ่มความสูง */
+    border: none; /* ไม่มีกรอบเมื่อยังไม่เปิด */
+    margin-right: 10px;
+}
+
+.search-input {
+    width: 0; /* ซ่อนกล่องค้นหา */
+    opacity: 0; /* ซ่อนกล่องค้นหา */
+    padding: 8px; /* ระยะห่างในกล่องค้นหา */
+    border: none; /* เอากรอบออก */
+    border-radius: 20px; /* มุมโค้ง */
+    transition: width 0.4s ease, opacity 0.4s ease; /* การเปลี่ยนแบบนุ่มนวล */
+    visibility: hidden; /* ซ่อนกล่องค้นหา */
+    height: 40px; /* เพิ่มความสูง */
+}
+
+.search-container.active {
+    width: 280px; /* ขยายขนาดกรอบเมื่อเปิด */
+    background-color: rgba(255, 255, 255, 1); /* เปลี่ยนพื้นหลังเป็นขาวเมื่อเปิด */
+}
+
+.search-container.active .search-input {
+    width: 200px; /* ขยายกล่องค้นหาเมื่อเปิด */
+    opacity: 1; /* ทำให้มองเห็น */
+    visibility: visible; /* แสดงกล่องค้นหา */
+}
+
+
+.search-container.active {
+    width: 280px; /* ขยายขนาดกรอบเมื่อเปิด */
+    background-color: rgba(255, 255, 255, 1); /* เปลี่ยนพื้นหลังเป็นขาวเมื่อเปิด */
+}
+
+.search-container.active .search-input {
+    width: 200px; /* ขยายกล่องค้นหาเมื่อเปิด */
+    opacity: 1; /* ทำให้มองเห็น */
+    visibility: visible; /* แสดงกล่องค้นหา */
+}
+
+
+.search-icon {
+    font-size: 20px; /* ขนาดของไอคอนค้นหา */
+    color: black; /* สีของไอคอนค้นหา */
+    margin-right: 10px; /* ระยะห่างระหว่างไอคอนค้นหากับกล่องค้นหา */
+}
+
+
+/* แสดงปุ่มกากบาทเมื่อกล่องค้นหาเปิด */
+.search-container.active .close-icon {
+    display: block;
+}
+
+/* ลบกรอบที่ปรากฏเมื่อโฟกัส */
+.search-input:focus {
+    outline: none; /* ลบขอบที่ปรากฏเมื่อโฟกัส */
+}
+
+
+
+
+
+/* Login and Register button styles */
+.login-register,
+.register {
+    padding: 5px 20px;
+    border-radius: 40px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.login-register {
+    color: white;
+    border: 2px solid #fff;
+    margin-left: 10px;
+}
+
+.login-register:hover {
+    color: #000;
+    background-color: #f19cbb;
+    border: 2px solid #f19cbb; /* เพิ่มกรอบสีชมพู */
+}
+
+
+.register {
+    color: #000 !important;
+    background-color: #f19cbb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Heading styles */
+h1 {
+    font-family: 'Georgia', serif; /* ฟอนต์ของหัวข้อ */
+    font-size: 36px; /* ขนาดฟอนต์ */
+    margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+    background: linear-gradient(90deg, #FFB3C6, #FB6F92); /* ไล่สีชมพู */
+}
+
+
+
+
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* กำหนดจำนวนคอลัมน์อัตโนมัติ */
+    gap: 20px; /* ระยะห่างระหว่างการ์ด */
+    padding: 20px; /* เพิ่มการเว้นระยะภายใน */
+}
+
+.product-card {
+    background-color: #fff; /* สีพื้นหลังของการ์ด */
+    border: 1px solid #ccc; /* กรอบของการ์ด */
+    border-radius: 10px; /* มุมโค้ง */
+    overflow: hidden; /* ซ่อนส่วนที่เกิน */
+    text-align: center; /* จัดข้อความให้กลาง */
+    padding: 20px; /* การเว้นระยะภายใน */
+    transition: box-shadow 0.3s; /* เพิ่ม transition */
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อ hover */
+}
+
+.product-card img {
+    width: 100%; /* ให้ภาพมีความกว้างเต็มของกรอบ */
+    height: 350px; /* ตั้งค่าความสูงที่แน่นอนให้กับภาพ */
+    object-fit: cover; /* ทำให้ภาพครอบคลุมพื้นที่โดยรักษาสัดส่วน */
+    transition: transform 0.3s ease; /* เพิ่ม transition สำหรับการเปลี่ยนแปลง */
+}
+
+.product-card:hover img {
+    transform: scale(1.05); /* ขยายภาพเล็กน้อยเมื่อ hover */
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* เพิ่มเงาเมื่อ hover */
+    transform: none; 
+}
+
+
+.price {
+    font-weight: bold; /* ทำให้ราคาหนาขึ้น */
+    margin: 10px 0; /* ระยะห่างด้านบนและล่าง */
+}
+
+.buy-button {
+    background-color: #FF8FAB; /* สีพื้นหลังของปุ่ม */
+    color: rgb(0, 0, 0); /* สีข้อความของปุ่ม */
+    border: none; /* ลบกรอบ */
+    border-radius: 5px; /* มุมโค้ง */
+    padding: 10px 15px; /* การเว้นระยะภายใน */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อ hover */
+    transition: background-color 0.3s; /* เพิ่ม transition */
+}
+
+.buy-button:hover {
+    background-color: #FB6F92; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+    transform: none;
+}
+
+
+
+
+
+
+/* เพิ่มระยะห่างระหว่าง main และ footer */
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 100px; 
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between; /* จัดให้ข้อความอยู่กลางและไอคอนอยู่ชิดขวา */
+    align-items: center; /* จัดแนวกลางในแนวตั้ง */
+}
+
+.social-links {
+    display: flex;
+}
+
+.social-links a {
+    font-size: 28px; /* ขนาดไอคอนที่ใหญ่ขึ้น */
+    margin: 0 15px; /* ช่องว่างระหว่างไอคอน */
+    text-decoration: none; /* ลบเส้นใต้ */
+    transition: color 0.3s, transform 0.3s; /* การเปลี่ยนสีและขนาดแบบนุ่มนวล */
+}
+
+.social-links a:hover {
+    color: #525048; /* สีเมื่อชี้ */
+    transform: scale(1.1); /* ขยายไอคอนเล็กน้อยเมื่อชี้ */
+}
+
+/* เพิ่มเติมสำหรับการเข้าถึง */
+footer p {
+    margin: 0; /* ลบระยะห่างสำหรับการจัดตำแหน่งที่ดีขึ้น */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries for mobile devices */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .extra-links {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .content {
+        padding: 30px 15px;
+    }
+
+    .login-register,
+    .register {
+        padding: 5px 10px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    nav {
+        padding: 10px 40px;
+    }
+
+    .content {
+        padding: 40px 20px;
+    }
+}
